@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>states</title>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Carter+One&display=swap');
+
+		body{
+			background-image: url('bgimg.jpg');
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-size: cover;
+		}
+		header{
+			text-align: center;
+			font-size: 30px;
+            font-weight: bold;
+            font-family: 'Carter One', cursive;
+            color: #ff0066;
+            border-bottom: 2px dashed #0066ff;
+            text-transform: uppercase;
+            }
+
+		.card{
+            display:flex;
+            flex-wrap:wrap;
+            justify-content:space-around;
+            font-size:20px;
+            font-family:verdana;
+        }
+        .details{
+        text-align: left; 
+        border:2px solid black;
+        width:400px;
+        margin:20px;
+        padding:10px;
+        border-radius:10px;
+        transition:1s;
+        color:#993300;
+        font-weight: bold;
+    }
+       .details:hover{
+       box-shadow:4px 4px 4px 5px black;
+       }
+       img{
+       display:flex;
+       flex-wrap:wrap;
+       border:1px solid black;
+       border-radius:30px;
+       justify-content:right;
+       margin-left:50px;
+       margin-bottom: 2px;
+       }
+        @media only screen and (max-width:600px){
+        .card{
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+        }
+        .details{
+            width: 92%;
+            margin: 2%;
+            padding-left: 2%;
+            text-align: left;
+            font-size: 18px;
+        }
+        header{
+            padding: 1%;
+        }
+        img{
+        	margin-left: 10px;
+        }
+	</style>
+</head>
+<body>
+	<script>
+		var places={
+			india:[
+			   {
+			   	State : "Andhra pradesh",
+			   	Capital : "Amaravathi",
+			   	Area : "160,205 sq.km",
+                Zone : "Southern",
+                Largest_City : "Vishakhapatnam",
+                Statehood : "1 November 1956",
+                Official_Language : "Telugu"
+			   },
+			   {
+			   	State : "Arunachal pradesh",
+			   	Capital : "Itanagar",
+			   	Area : "83,743 sq.km",
+                Zone : "North Eastern",
+                Largest_City : "Itanagar",
+                Statehood : "20 February 1987",
+                Official_Language : "English"
+ 			   },
+			   {
+			    State : "Assam",
+			   	Capital : "Dispur",
+			   	Area : "78,550 sq.km",
+                Zone : "North Eastern",
+                Largest_City : "Guwahati",
+                Statehood : "26 January 1950",
+                Official_Language : "Assamese"
+			   },
+			   {
+			    State : "Bihar",
+			   	Capital : "Patna",
+			   	Area : "94,163 sq.km",
+                Zone : "Eastern",
+                Largest_City : "Patna",
+                Statehood : "26 January 1950",
+                Official_Language : "Hindi"
+			   },
+			   {
+			    State : "Chattisgarh",
+			   	Capital : "Raipur",
+			   	Area : "135,194 sq.km",
+                Zone : "Central",
+                Largest_City : "Raipur",
+                Statehood : "26 January 1950",
+                Official_Language : "Hindi"
+			   },
+			   {
+			    State : "Goa",
+			   	Capital : "Panaji",
+			   	Area : "3,702 sq.km",
+                Zone : "Western",
+                Largest_City : "Vasco Da Gama",
+                Statehood : "30 May 1987",
+                Official_Language : "Konkani"
+			   },
+			   {
+			    State : "Gujarat",
+			   	Capital : "Gandhinagar",
+			   	Area : "196,024 sq.km",
+                Zone : "Western",
+                Largest_City : "Ahmedabad",
+                Statehood : "1 May 1960",
+                Official_Language : "Gujarati"
+			   },
+			   {
+			    State : "Haryana",
+			   	Capital : "Chandigarh",
+			   	Area : "44,212 sq.km",
+                Zone : "Northern",
+                Largest_City : "Faridabad",
+                Statehood : "1 November 1966",
+                Official_Language : "Hindi"
+			   },
+			   {
+			    State : "Himachal Pradesh",
+			   	Capital : "Shimla",
+			   	Area : "55,673 sq.km",
+                Zone : "Northern",
+                Largest_City : "Shimla",
+                Statehood : "25 January 1971",
+                Official_Language : "Hindi"
+			   },
+			   {
+			    State : "Jharkhand",
+			   	Capital : "Ranchi",
+			   	Area : "74,677 sq.km",
+                Zone : "Eastern",
+                Largest_City : "Jamshedpur",
+                Statehood : "15 November 2000",
+                Official_Language : "Hindi"
+			   },
+			   {
+			    State : "Karnataka",
+			   	Capital : "Bengaluru",
+			   	Area : "1,91,791 sq.km",
+                Zone : "Southern",
+                Largest_City : "Bangalore",
+                Statehood : "1 November 1956",
+                Official_Language : "Kannada"
+			   },
+			   {
+			    State : "Kerala",
+			   	Capital : "Thiruvananthapuram",
+			   	Area : "38,863 sq.km",
+                Zone : "Southern",
+                Largest_City : "Kochi",
+                Statehood : "1 November 1956",
+                Official_Language : "Malayalam"
+			   },
+			   {
+			    State : "Madhya Pradesh",
+			   	Capital : "Bhopal",
+			   	Area : "3,08,252 sq.km",
+                Zone : "Central",
+                Largest_City : "Indore",
+                Statehood : "26 January 1950",
+                Official_Language : "Hindi"
+			   },
+			   {
+			    State : "Maharastra",
+			   	Capital : "Mumbai",
+			   	Area : "3,07,713 sq.km",
+                Zone : "Western",
+                Largest_City : "Mumbai",
+                Statehood : "1 May 1960",
+                Official_Language : "Marati"
+			   },
+			   {
+			    State : "Manipur",
+			   	Capital : "Imphal",
+			   	Area : "22,347 sq.km",
+                Zone : "North Eastern",
+                Largest_City : "Imphal",
+                Statehood : "21 January 1972",
+                Official_Language : "Meitei"
+			   },
+			   {
+			    State : "Meghalaya",
+			   	Capital : "Shillong",
+			   	Area : "22,720 sq.km",
+                Zone : "North Eastern",
+                Largest_City : "Shillong",
+                Statehood : "21 January 1972",
+                Official_Language : "English"
+			   },
+			   {
+			    State : "Mizoram",
+			   	Capital : "Aizwal",
+			   	Area : "21,081 sq.km",
+                Zone : "North Eastern",
+                Largest_City : "Aizwal",
+                Statehood : "20 February 1987",
+                Official_Language : "Hindi,English,Mizo"
+			   },
+			   {
+			    State : "Nagaland",
+			   	Capital : "Kohima",
+			   	Area : "16,579 sq.km",
+                Zone : "North Eastern",
+                Largest_City : "Dimapur",
+                Statehood : "1 December 1963",
+                Official_Language : "English"
+			   },
+			   {
+			    State : "Odisha",
+			   	Capital : "Bhubaneswar",
+			   	Area : "1,55,820 sq.km",
+                Zone : "Eastern",
+                Largest_City : "Bhubaneswar",
+                Statehood : "26 January 1950",
+                Official_Language : "Odia"
+			   },
+			   {
+			    State : "Punjab",
+			   	Capital : "Chandigarh",
+			   	Area : "50,362 sq.km",
+                Zone : "Northern",
+                Largest_City : "Ludhiana",
+                Statehood : "1 November 1966",
+                Official_Language : "Punjabi"
+			   },
+			   {
+			    State : "Rajasthan",
+			   	Capital : "Jaipur",
+			   	Area : "3,42,269 sq.km",
+                Zone : "Northern",
+                Largest_City : "Jaipur",
+                Statehood : "26 January 1950",
+                Official_Language : "Hindi"
+			   },
+			   {
+			    State : "Sikkim",
+			   	Capital : "Gangtok",
+			   	Area : "7,096 sq.km",
+                Zone : "North Eastern",
+                Largest_City : "Gangtok",
+                Statehood : "16 May 1975",
+                Official_Language : "English,Nepali"
+			   },
+			   {
+			    State : "Tamil Nadu",
+			   	Capital : "Chennai",
+			   	Area : "1,30,058 sq.km",
+                Zone : "Southern",
+                Largest_City : "Chennai",
+                Statehood : "1 November 1956",
+                Official_Language : "Tamil"
+			   },
+			   {
+			    State : "Telangana",
+			   	Capital : "Hyderabad",
+			   	Area : "1,14,840 sq.km",
+                Zone : "Southern",
+                Largest_City : "Hyderabad",
+                Statehood : "2 June 2014",
+                Official_Language : "Telugu"
+			   },
+			   {
+			    State : "Tripura",
+			   	Capital : "Agartala",
+			   	Area : "10,492 sq.km",
+                Zone : "North Eastern",
+                Largest_City : "Agartala",
+                Statehood : "21 January 1972",
+                Official_Language : "Bengali,English,Kokborok"
+			   },
+			   {
+			    State : "Uttarakhand",
+			   	Capital : "Deharadun",
+			   	Area : "53,483 sq.km",
+                Zone : "Northern",
+                Largest_City : "Deharadun",
+                Statehood : "9 November 2000",
+                Official_Language : "Hindi"
+			   },
+			   {
+			    State : "Uttar Pradesh",
+			   	Capital : "Lucknow",
+			   	Area : "2,43,286 sq.km",
+                Zone : "Northern",
+                Largest_City : "Kanpur",
+                Statehood : "26 January 1950",
+                Official_Language : "Hindi"
+			   },
+			   {
+			    State : "West Bengal",
+			   	Capital : "Kolkata",
+			   	Area : "88,752 sq.km",
+                Zone : "Eastern",
+                Largest_City : "Kolkata",
+                Statehood : "26 January 1950",
+                Official_Language : "Bengali,Nepali"
+			   },
+			]
+		}
+var body=document.body;
+var header=document.createElement("header");
+header.textContent="States in India";
+body.append(header);
+
+var card=document.createElement("div");
+card.classList.add("card");
+body.append(card);
+for(i=0;i<places.india.length;i++)
+{
+var details=document.createElement("div");
+details.classList.add("details");
+card.append(details);
+
+var state=document.createElement("p");
+state.textContent="State : "+places.india[i].State;
+details.append(state);
+
+var capital=document.createElement("p");
+capital.textContent="Capital : "+places.india[i].Capital;
+details.append(capital);
+
+var area=document.createElement("p");
+area.textContent="Area : "+places.india[i].Area;
+details.append(area);
+
+var zone=document.createElement("p");
+zone.textContent="Zone : "+places.india[i].Zone;
+details.append(zone);
+
+var largest_city=document.createElement("p");
+largest_city.textContent="Largest_City : "+places.india[i].Largest_City;
+details.append(largest_city);
+
+var statehood=document.createElement("p");
+statehood.textContent="Statehood : "+places.india[i].Statehood;
+details.append(statehood);
+
+var official_language=document.createElement("p");
+official_language.textContent="Official_Language : "+places.india[i].Official_Language;
+details.append(official_language);
+
+ 
+var image=document.createElement("img");
+image.setAttribute("src","places/IMAGE"+i+".jpg");
+image.setAttribute("width","300px");
+image.setAttribute("height","200px");
+details.append(image);
+}
+
+	</script>
+
+</body>
+</html>
+
